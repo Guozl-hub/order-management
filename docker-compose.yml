@@ -1,0 +1,13 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  order-management:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: order-management
+    ports:
+      - 9091:9091
+    environment:
+      TZ: Asia/Shanghai
