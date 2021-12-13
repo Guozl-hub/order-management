@@ -33,4 +33,3 @@ test {
 }
 
 apply from: 'checkstyle.gradle'
-
