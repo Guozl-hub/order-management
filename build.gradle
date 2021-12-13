@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.6.1'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'pmd'
 }
 
 group = 'com.example'
@@ -33,3 +34,9 @@ test {
 }
 
 apply from: 'checkstyle.gradle'
+pmd {
+    consoleOutput = true
+    toolVersion = "6.36.0"
+    ruleSetFiles = files('config/pmd-ruleSets.xml')
+    ruleSets = []
+}
