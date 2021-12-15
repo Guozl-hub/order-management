@@ -11,13 +11,17 @@ services:
       - 9091:9091
     environment:
       TZ: Asia/Shanghai
+    depends_on:
+      - order-management-mysql
+
   order-management-mysql:
-    image: mysql:5.6
+    image: mysql:8.0
+    container_name: order-management-mysql
     command: --character-set-server=utf8 --collation-server=utf8_general_ci --lower_case_table_names=1 --default-time-zone=+08:00
     restart: always
     environment:
-        - MYSQL_ROOT_PASSWORD=gzl123
-        - MYSQL_DATABASE=order_management
-        - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=gzl123
+      - MYSQL_DATABASE=order_management
+      - TZ=Asia/Shanghai
     ports:
-        - 3307:3306
+      - 3307:3306
