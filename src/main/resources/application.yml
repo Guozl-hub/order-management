@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3307/order_management?useSSL=false
+    url: jdbc:mysql://localhost:3307/order_management?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: gzl123
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,3 +10,6 @@ spring:
     encoding: UTF-8
     schemas: order_management
     validate-on-migrate: true
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
