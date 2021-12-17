@@ -1,4 +1,4 @@
-package com.example.ordermanagement.api.request;
+package com.example.ordermanagement.dto;
 
 import com.example.ordermanagement.matadata.OrderStatusType;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class OrderItemsRequest {
+public class OrderItemsDto {
     private OrderStatusType orderStatusType;
-    private List<ItemInfo> items;
+    private List<ItemDto> items;
 }
