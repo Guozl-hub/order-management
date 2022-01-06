@@ -6,7 +6,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   flyway:
     enabled: true
-    locations: classpath:db/migration
+    locations: classpath:db/migration/main
     encoding: UTF-8
     schemas: order_management
     validate-on-migrate: true

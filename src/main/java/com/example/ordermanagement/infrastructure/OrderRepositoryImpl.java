@@ -8,7 +8,6 @@ import com.example.ordermanagement.infrastructure.jpa.OrderRepositoryJpa;
 import com.example.ordermanagement.infrastructure.po.ItemPo;
 import com.example.ordermanagement.infrastructure.po.OrderItemsPo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,13 +16,13 @@ import java.util.stream.Collectors;
 @Repository
 @RequiredArgsConstructor
 public class OrderRepositoryImpl implements OrderRepository {
-    @Autowired
     private final OrderRepositoryJpa orderRepositoryJpa;
 
     @Override
-    public void orderCreat(OrderItemsDto orderItemsDto) {
+    public OrderItemsDto orderCreat(OrderItemsDto orderItemsDto) {
         OrderItemsPo orderItemsPo = getOrderItemsPo(orderItemsDto);
-        orderRepositoryJpa.save(orderItemsPo);
+        OrderItemsPo itemsPo = orderRepositoryJpa.save(orderItemsPo);
+        return getOrderItemsDto(itemsPo);
     }
 
     @Override
@@ -46,6 +45,7 @@ public class OrderRepositoryImpl implements OrderRepository {
             .map(item -> ItemDto.builder().itemName(item.getName()).cost(item.getCost()).build())
             .collect(Collectors.toList());
         return OrderItemsDto.builder()
+            .id(orderItemsPo.getId())
             .orderStatusType(orderItemsPo.getStatus())
             .items(itemDtoList).build();
     }

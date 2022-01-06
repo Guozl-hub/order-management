@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @Builder
 public class OrderItemsDto {
+    private Long id;
     @Enumerated(EnumType.STRING)
     private OrderStatusType orderStatusType;
     private List<ItemDto> items;

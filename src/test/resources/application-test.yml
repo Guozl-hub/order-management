@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      use-new-id-generator-mappings: false
+    show-sql: true
+  datasource:
+    url: jdbc:h2:mem:order_management
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  flyway:
+    enabled: false
