@@ -38,8 +38,9 @@ class OrderRepositoryImplTest {
     List<ItemDto> itemsDto;
     OrderItemsPo orders;
     List<ItemPo> items;
+
     @BeforeEach
-    void setUp(){
+    void setUp() {
         items = List.of(ItemPo.builder()
                 .name("ipone11")
                 .cost(BigDecimal.valueOf(5999))
@@ -83,17 +84,17 @@ class OrderRepositoryImplTest {
     }
 
     @Test
-    void should_query_an_order_when_given_an_id(){
+    void should_query_an_order_when_given_an_id() {
         //given
 
         //when
         testEntityManager.persist(orders);
         OrderItemsDto orderItemsDto = orderRepository.orderQuery(1L);
         //then
-        Assertions.assertEquals(ordersDto.getOrderStatusType(),orderItemsDto.getOrderStatusType());
+        Assertions.assertEquals(ordersDto.getOrderStatusType(), orderItemsDto.getOrderStatusType());
         for (int i = 0; i < 2; i++) {
-            Assertions.assertEquals(ordersDto.getItems().get(i).getItemName(),orderItemsDto.getItems().get(i).getItemName());
-            Assertions.assertEquals(ordersDto.getItems().get(i).getCost(),orderItemsDto.getItems().get(i).getCost());
+            Assertions.assertEquals(ordersDto.getItems().get(i).getItemName(), orderItemsDto.getItems().get(i).getItemName());
+            Assertions.assertEquals(ordersDto.getItems().get(i).getCost(), orderItemsDto.getItems().get(i).getCost());
         }
     }
 }
